@@ -1,0 +1,19 @@
+{
+  "name": "eda6",
+  "version": "1.0.0",
+  "description": "EDA6 challenge resolution",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "keywords": [
+    "EDA6"
+  ],
+  "author": "Guillermo Ojeda",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "ws": "^8.6.0"
+  }
+}
