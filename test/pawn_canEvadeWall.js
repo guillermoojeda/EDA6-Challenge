@@ -25,7 +25,7 @@ const ans1 = [1, 6];
 const ans2 = [4, 10];
 
 describe('pawn.canEvadeWall()', () => {
-  it('With the first example, should return  [0,6]', () => {
+  it('With the first example, should return  [1,6]', () => {
     expect(pawn.canEvadeWall(sample, [2, 4])).to.deep.equal([1, 6]);
   });
   it('With the second example, should return [,6]', () => {

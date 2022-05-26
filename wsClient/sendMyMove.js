@@ -1,9 +1,10 @@
 const turnSolver = require('../helpers/turnSolver/turnSolver');
+const sendMyWall = require('./sendMyWall');
 
 /**
  * Calls turn solver, reverses coordinates if corresponds due to player´s perspective, and divides coordinates by 2 to match the requirements of server.
  * 
- * @param {*} obj 
+ * @param {*} obj is the turn object
  * @returns the response object, ready to send to server.
  */
 
@@ -12,14 +13,23 @@ function sendMyMove(obj) {
 
   const move = turnSolver(obj);
 
-  if (move[0] === 'h' || move[0] === 'v') {
+  // handling wall
 
-    /* ... send my wall here ... */
-    wallResp = sendMyWall(move);
+  try {
+    if (move[0] === 'h' || move[0] === 'v') {
 
-    return sendMyWall(wallResp);
+      /* ... send my wall here ... */
+      const wallResp = sendMyWall(move, obj);
 
+      return wallResp;
+
+    }
+  } catch (e) {
+    console.log(e);
   }
+
+  // end of handling wall
+
 
 
   var fromX = move[0][0] / 2;
@@ -31,7 +41,7 @@ function sendMyMove(obj) {
 
     function alt(coord) {
 
-      newCoord = (coord - 8) * -1;
+      const newCoord = (coord - 8) * -1;
       return newCoord
     }
 

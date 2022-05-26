@@ -13,7 +13,7 @@ const player = {
   getBestMovesAndScores,
   getBestMovesFromSim,
   getMoveScores,
-  getPawns
+  getPawns,
 }
 
 module.exports = player;

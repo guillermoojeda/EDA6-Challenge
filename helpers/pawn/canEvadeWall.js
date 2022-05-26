@@ -1,9 +1,9 @@
 /**
- * Returns true if a pawn can evade a wall in up to 2 turns.
+ * Returns the path where a pawn can evade a wall in up to 2 turns. Returns false if it cannot.
  * 
  * @param {Array} boardArray is the board array.
- * @param {Array} coords is an array where a Pawn is located, such as [6, 8]
- * @returns the coordinates by where the pawn can pass. E.g. [3, 5]. Returns false if there is none
+ * @param {Array} coords is an array of arrays where a Pawn are located, such as [6, 8].
+ * @returns the coordinates by where one of the pawns can pass. E.g. [3, 5]. Returns false if there is none
  */
 
 function canEvadeWall(boardArray, coords) {
@@ -25,7 +25,7 @@ function canEvadeWall(boardArray, coords) {
     return [coordX - 1, coordY + 2];
   };
 
-  console.log('error');
+  console.log('cannot go around wall');
 
   return false;
 }

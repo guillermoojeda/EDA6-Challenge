@@ -7,10 +7,13 @@ const scoresOneMoveAhead = require('../simMoves/scoresOneMoveAhead');
 const getBestMovesFromSim = require('../player/getBestMovesFromSim');
 const scoresMovesAhead = require('../simMoves/scoresMovesAhead');
 const getAllMoves = require('../player/getAllMoves');
+const enemy = require('../enemy/enemy');
+const block = require('../block/block');
+const pawn = require('../pawn/pawn');
 
 
 /**
- * Returns and Array with the corresponding move response.
+ * Returns and Array with the corresponding move response. If the first element ois the letter 'h' or 'v', it is not a move, it is a wall placement.
  * @param {Object} turnObject is the turn object received from server.
  * @returns an array with your move, in format [[fromX, fromy], [toX, toY]] 
  */
@@ -26,6 +29,24 @@ function turnSolver(turnObject) {
     const boardArray = getBoardArray(boardString);
 
     // Detect if enemy is blocking my pawn, then counterBlock
+    /*
+
+    const blocked = enemy.isBlockingPawn(boardArray, turnObject.data.side)
+
+    if (blocked) {
+      console.log('blocked');
+      const path = pawn.canEvadeWall(boardArray, blocked);
+      if (path) {
+        console.log('Attempting to defend path...');
+        const hWall = block.preventBlock(path, boardArray, turnObject.data.walls);
+        if (hWall) {
+          const antiBlock = ['h', hWall[0], hWall[1]];
+          return antiBlock;
+        }
+        console.log('Could not defend path.')
+      }
+    }
+    */
 
 
     // alt 1 -- use getBestMoves() -- evalluates only present possiblilities, not futures

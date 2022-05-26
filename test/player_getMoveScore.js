@@ -1,4 +1,4 @@
-const getMoveScore = require('../helpers/player/getMoveScore');
+const getMoveScore = require('../helpers/player/player').getMoveScores;
 const chai = require('chai');
 const expect = chai.expect;
 

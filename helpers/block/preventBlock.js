@@ -9,19 +9,13 @@ const wall = require('../wall/wall');
  * @returns {Array} a coordinate such as [1, 4] where a wall should be placed horizontally to prevent a block. Returns false if the block cannot be prevented, or if the path cannot be blocked for its location or surrounding walls. 
  */
 
-function preventBlock(location, boardArray, wallsLeft, wallsInBoard) {
-
-
-  console.log(location);
-  console.log(wall.getFreeH(boardArray));
+function preventBlock(location, boardArray, wallsLeft) {
 
   const coordX = location[0];
   const coordY = location[1];
 
   const place1 = [coordX, coordY - 3];
-  console.log(place1);
   const place2 = [coordX, coordY + 3];
-  console.log(place2);
 
   const freeH = wall.getFreeH(boardArray);
 
@@ -32,7 +26,6 @@ function preventBlock(location, boardArray, wallsLeft, wallsInBoard) {
       place1[1] > 0 &&
       place1[1] < 16
     ) {
-      console.log(place1);
       return place1;
     }
     if (
@@ -41,11 +34,9 @@ function preventBlock(location, boardArray, wallsLeft, wallsInBoard) {
       place2[1] > 0 &&
       place2[1] < 16
     ) {
-      console.log(place2);
       return place2;
     }
   }
-  console.log('entro');
   return false;
 }
 

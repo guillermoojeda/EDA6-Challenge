@@ -1,5 +1,3 @@
-const turnSolver = require('../helpers/turnSolver/turnSolver');
-
 /**
  * Calls turn solver,  reverses coordinates if corresponds due to player´s perspective and divides coordinates by 2 to match the requirements of server. Corrects the "-1" value for coordinates if our player is 'N',
  * 
@@ -7,12 +5,13 @@ const turnSolver = require('../helpers/turnSolver/turnSolver');
  * @returns the response object, ready to send to server.
  */
 
-function sendMyWall(coords) {
+function sendMyWall(coords, obj) {
 
-  var coordX = coords[1] / 2;
-  var coordY = coords[2] / 2;
+  console.log('entrance coords');
+  console.log(coords);
+  var coordX = Math.floor(coords[1] / 2);
+  var coordY = Math.floor(coords[2] / 2);
   var orientation = coords[0]
-
 
   if (obj.data.side === 'N') {
 
@@ -22,11 +21,12 @@ function sendMyWall(coords) {
       return newCoord
     }
 
-    coordX = alt(coordX) - 1;
-    coordY = alt(coordY) - 1;
+    coordX = alt(coordX) - 1; // - 1; // original was -1
+    coordY = alt(coordY) - 1; // - 1; // original was -1
   }
 
-  console.log(`Veredict: wall at ${fromX}, ${fromY}`);
+  console.log(`Veredict: wall at ${coords[1]}, ${coords[2]}`);
+  console.log(`That is: wall at ${coordX}, ${coordY}`);
 
   const resp = {
     action: "wall",
@@ -36,9 +36,9 @@ function sendMyWall(coords) {
       row: coordX,
       col: coordY,
       orientation: orientation,
-      to_row: toX,
-      to_col: toY,
     }
   }
   return resp
 };
+
+module.exports = sendMyWall;
