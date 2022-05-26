@@ -19,27 +19,4 @@ function getWallSlots(boardArray) {
   return walledCoords;
 }
 
-// 0a1b2c3d4e5f6g7h8
-const boardArraySample = [
-  '  N     N     N  ', // 0
-  '           |     ', // a
-  '  -*-      *     ', // 1
-  '          N|     ', // b
-  '                 ', // 2
-  '      S          ', // c
-  '                 ', // 3
-  '            -*-  ', // d
-  '                 ', // 4
-  '                 ', // e
-  '    N            ', // 5
-  '                 ', // f
-  '           |     ', // 6
-  '  -*-      *     ', // g
-  '          S|     ', // 7
-  '                 ', // h
-  '  S     S     S  '  // 8
-]
-
 module.exports = getWallSlots;
-
-console.log(getWallSlots(boardArraySample));

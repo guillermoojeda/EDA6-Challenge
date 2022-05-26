@@ -17,7 +17,14 @@ function getFreeH(boardArray) {
         boardArray[i][j - 1] === ' '
       ) {
         const newFreeSpot = [i, j];
-        freeSpots.push(newFreeSpot);
+        if (j + 2 > 16 || j - 2 < 0) {
+          freeSpots.push(newFreeSpot);
+        } else if (
+          boardArray[i][j + 2] === ' ' &&
+          boardArray[i][j + 2] === ' '
+        ) {
+          freeSpots.push(newFreeSpot);
+        }
       }
     }
   }
@@ -26,25 +33,3 @@ function getFreeH(boardArray) {
 };
 
 module.exports = getFreeH;
-
-const boardArraySample = [
-  '  N     N  |  N  ', // 0
-  '  -*-      *     ', // a
-  '           |     ', // 1
-  '          N      ', // b
-  '                 ', // 2
-  '      S          ', // c
-  '                 ', // 3
-  '            -*-  ', // d
-  '                 ', // 4
-  '                 ', // e
-  '    N            ', // 5
-  '                 ', // f
-  '           |     ', // 6
-  '  -*-      *     ', // g
-  '          S|     ', // 7
-  '                 ', // h
-  '  S     S     S  '  // 8
-]
-
-console.log(getFreeH(boardArraySample));

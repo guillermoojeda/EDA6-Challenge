@@ -1,9 +1,10 @@
 /**
- * Returns an array with all the coords occupied by walls-.
+ * Returns an array with all the coords where a wall have its center-.
  * 
  * @param {Array} boardArray - a boardArray resulting from getBoardArray. It must be inverted if playing 'N'.
- * @returns a 
+ * @returns an array of coordinates such as[[x, y], [x1, y1], [x2, y2]];
  */
+
 function getCenterWallSlots(boardArray) {
   // const refString = '0a1b2c3d4e5f6g7h8';
   const walledCoords = [];
@@ -38,8 +39,6 @@ const boardArraySample = [
   '          S|     ', // 7
   '                 ', // h
   '  S     S     S  '  // 8
-]
-
-console.log(getCenterWallSlots(boardArraySample));
+];
 
 module.exports = getCenterWallSlots;
