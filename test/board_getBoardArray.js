@@ -1,4 +1,4 @@
-const getBoardArray = require('../helpers/board/getBoardArray');
+const getBoardArray = require('../helpers/board/board').getBoardArray;
 const chai = require('chai');
 const expect = chai.expect;
 const sampleBoard = require('./sampleBoard');
@@ -24,7 +24,7 @@ const correctArray =
     '  S     S     S  '
   ];
 
-describe('getBoardArray()', () => {
+describe('board.getBoardArray()', () => {
   it('the function should return an Array', () => {
     expect(getBoardArray(sampleBoard)).to.be.an('array');
   })

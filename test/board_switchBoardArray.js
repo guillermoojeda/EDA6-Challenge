@@ -1,4 +1,4 @@
-const switchBoardArray = require('../helpers/board/switchBoardArray');
+const { switchBoardArray } = require('../helpers/board/board');
 const chai = require('chai');
 const expect = chai.expect;
 

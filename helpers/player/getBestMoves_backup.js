@@ -1,5 +1,5 @@
-const getPossibleMoves = require('../pawn/getPossibleMoves');
 const getMoveScore = require('./getMoveScore');
+const pawn = require('../pawn');
 
 /**
  * Returns an array with the best moves. The array will contain only one move if there is no tie.
@@ -16,7 +16,7 @@ function getBestMoves(boardArray, playerColor) {
   for (var i = 0; i < boardArray.length; i++) {
     for (var j = 0; j < boardArray.length; j++) {
       if (boardArray[i][j] === playerColor) {
-        var moves = getPossibleMoves([i, j], boardArray);
+        var moves = pawn.getPossibleMoves([i, j], boardArray);
         var allMoves = moves.map(move => [[i, j], move]);
         // console.log(allMoves);
         const movesAndScores = allMoves.map(move => {
@@ -69,8 +69,5 @@ const sampleBoardArray = [
   '                 ',
   '  S     S     S  '
 ];
-
-// getBestMoves(sampleBoardArray, "N");
-// console.log(JSON.stringify(getBestMoves(sampleBoardArray, "N"), null, 2));
 
 module.exports = getBestMoves;

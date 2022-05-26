@@ -1,8 +1,11 @@
 const getAllMoves = require('../player/getAllMoves');
 const getPossibleMoves = require('../pawn/getPossibleMoves');
 const getResultingBoard = require('./getResultingBoard');
-const switchBoardArray = require('../board/switchBoardArray');
-const printBoard = require('../board/printBoard')
+
+const board = require('../board/board');
+
+
+
 
 /**
  * 
@@ -128,7 +131,7 @@ function scoresMovesAhead(currentBoard, playerColor, turnsAhead = 0, currentTurn
     }
     */
 
-    perspectiveBoard = switchBoardArray(newBoard);
+    perspectiveBoard = board.switchBoardArray(newBoard);
 
     if (i !== 18) {
       const refString = '0a1b2c3d4e5f6g7h8';

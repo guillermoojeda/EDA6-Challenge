@@ -1,13 +1,14 @@
 const boardSwitcher = require('./boardSwitcher');
 const getBoardArray = require('./getBoardArray');
 const printBoard = require('./printBoard');
-const switchBoard = require('./switchBoardArray');
+const switchBoardArray = require('./switchBoardArray');
 
 const board = {
   boardSwitcher,
   getBoardArray,
   printBoard,
-  switchBoard
+  switchBoardArray,
+
 }
 
 module.exports = board;

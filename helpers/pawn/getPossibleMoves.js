@@ -1,4 +1,3 @@
-
 const move = require('./pawnMoves');
 
 /**

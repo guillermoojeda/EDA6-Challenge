@@ -1,4 +1,4 @@
-const getBestMoves = require('./../helpers/player/getBestMoves');
+const { getBestMoves } = require('./../helpers/player/player');
 const chai = require('chai');
 const expect = chai.expect;
 

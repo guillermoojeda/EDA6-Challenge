@@ -1,4 +1,4 @@
-const getPossibleMoves = require('../helpers/pawn/getPossibleMoves');
+const { getPossibleMoves } = require('../helpers/pawn/pawn');
 const chai = require('chai');
 const expect = chai.expect;
 

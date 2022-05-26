@@ -25,6 +25,8 @@ function turnSolver(turnObject) {
     }
     const boardArray = getBoardArray(boardString);
 
+    // Detect if enemy is blocking my pawn, then counterBlock
+
 
     // alt 1 -- use getBestMoves() -- evalluates only present possiblilities, not futures
     // const bestMoves = getBestMoves(boardArray, turnObject.data.side);

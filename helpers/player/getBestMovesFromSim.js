@@ -1,5 +1,3 @@
-
-
 /**
  * Returns the best move from an array of possible moves from a table of moves with their moves included.
  * 

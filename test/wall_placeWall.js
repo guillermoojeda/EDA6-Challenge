@@ -1,4 +1,4 @@
-const placeWall = require('../helpers/wall/placeWall');
+const { placeWall } = require('../helpers/wall/wall');
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -12,9 +12,9 @@ const correctAnswer = {
   }
 }
 
-describe('placeWall', () => {
+describe('wall.placeWall', () => {
   // ...
-  it("placeWall([5, 8], 'h', '2d348323-2e79-4961-ac36-1b000e8c42a5') should give the corresponding message object", () => {
+  it("wall.placeWall([5, 8], 'h', '2d348323-2e79-4961-ac36-1b000e8c42a5') should give the corresponding message object", () => {
     expect(placeWall([5, 8], 'h', '2d348323-2e79-4961-ac36-1b000e8c42a5')).to.deep.equal(correctAnswer);
   });
 })

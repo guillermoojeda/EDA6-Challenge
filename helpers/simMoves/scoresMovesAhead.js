@@ -1,18 +1,16 @@
-const getAllMoves = require('../player/getAllMoves');
-const getPossibleMoves = require('../pawn/getPossibleMoves');
 const getResultingBoard = require('./getResultingBoard');
 const switchBoardArray = require('../board/switchBoardArray');
-const printBoard = require('../board/printBoard');
-const getBestMoves = require('../player/getBestMoves');
-const getMoveScore = require('../player/getMoveScore');
-const getBestMovesAndScores = require('../player/getBestMovesAndScores');
+
+const player = require('../player/player');
+const pawn = require('../pawn/pawn');
+const board = require('../board/board');
 
 /**
  * 
  * @param {Array} currentBoard in boardArray format;
  * @param {String} playerColor is the current player´s color, the player using this algorithm.
  * @param {Number} currentTurnAhead the turn that is being calculated, only to know if the optimal scores should be possitive or negative must be an integer.
- * @param {*} turnsAhead is the total amount of calculations of turns ahead, with respect turn zero being the one that is taking place in reality, not simulation. A value of 0 should make this function return the same value as getBestMoves() (or is it getAllMoves?);
+ * @param {*} turnsAhead is the total amount of calculations of turns ahead, with respect turn zero being the one that is taking place in reality, not simulation. A value of 0 should make this function return the same value as getAllMoves();
  * @param {*} inputMoveList is the list used in recursion case only that includes [move, moveScore, cummulatedMoveScore];
  */
 function scoresMovesAhead(currentBoard, playerColor, turnsAhead = 0, currentTurnAhead = 0, inputMoveList = [], moveUnderEval = 0) {
@@ -23,7 +21,7 @@ function scoresMovesAhead(currentBoard, playerColor, turnsAhead = 0, currentTurn
   var thisTurnAllMovesAndScores;
 
   if (JSON.stringify(inputMoveList) === JSON.stringify([])) {
-    thisTurnAllMovesAndScores = getAllMoves(currentBoard, playerColor);
+    thisTurnAllMovesAndScores = player.getAllMoves(currentBoard, playerColor);
   } else {
     thisTurnAllMovesAndScores = inputMoveList;
   }
@@ -64,15 +62,15 @@ function scoresMovesAhead(currentBoard, playerColor, turnsAhead = 0, currentTurn
     // -- in this resulting board, get the best move (for the other player)
     //    we will need to reverse the perspective.
 
-    const switchedBoard = switchBoardArray(newBoard);
+    const switchedBoard = board.switchBoardArray(newBoard);
 
     // get the best move for the iteration.
 
-    const iterationBestMove = getBestMoves(switchedBoard, iterationPlayerColor)[0];
+    const iterationBestMove = player.getBestMoves(switchedBoard, iterationPlayerColor)[0];
 
     // get the score for the corresponding move;
 
-    const iterationScore = getMoveScore(iterationBestMove)[2];
+    const iterationScore = player.getMoveScores(iterationBestMove)[2];
 
     // -- if it is enemy, substract best score to corresponding move. Else, add it.
 
@@ -88,9 +86,9 @@ function scoresMovesAhead(currentBoard, playerColor, turnsAhead = 0, currentTurn
 
         // Only needed for two turns simulation, get the third move (second move after the original)
 
-        const boardAfterEnemyMove2 = switchBoardArray(boardAfterEnemyMove);
+        const boardAfterEnemyMove2 = board.switchBoardArray(boardAfterEnemyMove);
 
-        const afterEnemyBestMoves = getBestMovesAndScores(boardAfterEnemyMove2, playerColor);
+        const afterEnemyBestMoves = player.getBestMovesAndScores(boardAfterEnemyMove2, playerColor);
 
         // thisTurnAllMovesAndScores[i].push(afterEnemyBestMoves.score);
 

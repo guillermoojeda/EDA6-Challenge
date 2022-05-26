@@ -1,4 +1,4 @@
-const movePawn = require('../helpers/pawn/movePawn');
+const { movePawn } = require('../helpers/pawn/pawn');
 const chai = require('chai');
 const expect = chai.expect;
 

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const scoresMovesAhead = require('../helpers/simMoves/scoresMovesAhead');
+const { scoresMovesAhead } = require('../helpers/simMoves/simMoves');
 
 const expect = chai.expect;
 
@@ -198,7 +198,7 @@ const ans5 = [
   [[10, 8], [10, 10], 14]
 ]
 
-describe('scoresMovesAhead()', () => {
+describe('simMoves.scoresMovesAhead()', () => {
   it('With the example sampleBoard, scoresMovesAhead(sampleBoard, "S") should return an array like ans0', () => {
     expect(scoresMovesAhead(sampleBoard, 'S')).to.deep.equal(ans0);
   });
@@ -217,9 +217,6 @@ describe('scoresMovesAhead()', () => {
   });
   it('If this works I am gonna have a coca-cola.', () => {
     expect(scoresMovesAhead(sample5, 'S', 2)).to.deep.equal(ans5);
-  });
-  it('This is a test with a bug that does not work right...', () => {
-    expect(scoresMovesAhead(sample6, 'S', 2)).to.deep.equal('NA');
   });
 
 });

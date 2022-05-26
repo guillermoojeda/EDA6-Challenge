@@ -1,4 +1,4 @@
-const getWallSlots = require('../helpers/wall/getWallSlots');
+const { getCenterWallSlots } = require('../helpers/wall/wall');
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -30,9 +30,9 @@ const correctAnswer = [[2, 3],
 
 
 
-describe('getWallSlots()', () => {
+describe('wall.getCenterWallSlots()', () => {
   // ...
-  it("getWallSlots(arraySampleProvided) should return the corresponding message object", () => {
-    expect(getWallSlots(boardArraySample)).to.deep.equal(correctAnswer);
+  it("getCenterWallSlots(arraySampleProvided) should return the corresponding message object", () => {
+    expect(getCenterWallSlots(boardArraySample)).to.deep.equal(correctAnswer);
   });
 })

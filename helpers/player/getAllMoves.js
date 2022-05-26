@@ -1,5 +1,8 @@
 const getPossibleMoves = require('../pawn/getPossibleMoves');
+const pawn = require('../pawn/pawn');
 const getMoveScore = require('./getMoveScore');
+
+
 
 /**
  * Returns an array with the best moves. The array will contain only one move if there is no tie.
@@ -16,7 +19,7 @@ function getAllMoves(boardArray, playerColor) {
   for (var i = 0; i < boardArray.length; i++) {
     for (var j = 0; j < boardArray.length; j++) {
       if (boardArray[i][j] === playerColor) {
-        var moves = getPossibleMoves([i, j], boardArray, playerColor);
+        var moves = pawn.getPossibleMoves([i, j], boardArray, playerColor);
         var allMoves = moves.map(move => [[i, j], move]);
         // console.log(allMoves);
         const movesAndScores = allMoves.map(move => {
@@ -31,48 +34,6 @@ function getAllMoves(boardArray, playerColor) {
   }
 
   return allMovesAndScores;
-
-  // allMovesAndScores has all possible moves and scores
-
-  // bestMoves is created using memorization.
-  const bestMoves = {
-    score: -Infinity,
-    moves: []
-  };
-
-  for (var i = 0; i < allMovesAndScores.length; i++) {
-    if (allMovesAndScores[i][2] > bestMoves.score) {
-      bestMoves.score = allMovesAndScores[i][2];
-      bestMoves.moves = [[allMovesAndScores[i][0], allMovesAndScores[i][1]]];
-    } else if (allMovesAndScores[i][2] === bestMoves.score) {
-      bestMoves.moves.push([allMovesAndScores[i][0], allMovesAndScores[i][1]]);
-    }
-  }
-
-  return bestMoves.moves;
 }
-
-const sampleBoardArray = [
-  '  N     N     N  ',
-  '                 ',
-  '  S              ',
-  '                 ',
-  '        S        ',
-  '                 ',
-  '      S N S      ',
-  '                 ',
-  '        S        ',
-  '                 ',
-  '                 ',
-  '                 ',
-  '                 ',
-  '                 ',
-  '                 ',
-  '                 ',
-  '  S     S     S  '
-];
-
-// getAllMoves(sampleBoardArray, "N");
-// console.log(JSON.stringify(getAllMoves(sampleBoardArray, "N"), null, 2));
 
 module.exports = getAllMoves;

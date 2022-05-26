@@ -3,7 +3,8 @@ const getAllMovesAndScores = require('./getAllMovesAndScores');
 const getBestMoves = require('./getBestMoves');
 const getBestMovesAndScores = require('./getBestMovesAndScores');
 const getBestMovesFromSim = require('./getBestMovesFromSim');
-const getMovesScores = require('./getMoveScore');
+const getMoveScores = require('./getMoveScore');
+const getPawns = require('./getPawns');
 
 const player = {
   getAllMoves,
@@ -11,7 +12,8 @@ const player = {
   getBestMoves,
   getBestMovesAndScores,
   getBestMovesFromSim,
-  getMovesScores,
+  getMoveScores,
+  getPawns
 }
 
 module.exports = player;
